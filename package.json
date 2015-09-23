@@ -1,0 +1,38 @@
+{
+  "name": "klarna",
+  "version": "0.0.1",
+  "description": "Simple HTML/JavaScript application that interacts with the user and draws some geometrical shapes.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo NO TESTS SPECIFIED BY M.J.",
+    "dev": "node_modules/.bin/babel-node server",
+    "webpack": "node_modules/.bin/gulp webpack"
+  },
+  "author": "Martin Jirku",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^5.8.23",
+    "immutable": "^3.7.5",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "materialize-css": "^0.97.1",
+    "normalize.css": "^3.0.3",
+    "object-assign": "^4.0.1",
+    "react": "^0.13.3",
+    "react-redux": "^2.1.2",
+    "redux": "^3.0.0",
+    "webpack": "^1.12.2"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6",
+    "jsx-loader": "^0.13.2",
+    "path": "^0.12.7",
+    "react-hot-loader": "^1.3.0",
+    "webpack-dev-server": "^1.11.0"
+  }
+}
