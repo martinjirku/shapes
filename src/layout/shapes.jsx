@@ -2,21 +2,44 @@
 
 import React, { Component } from 'react'
 import { PaintWall } from './paintwall'
+import { connect } from 'react-redux'
+import { coordsToString } from '../common/geom-helpers'
 
+import { resetPoints } from '../action-creators/geometry'
 
+@connect(state=>{
+    state.toJS()
+    return {
+        points: state.getIn(['geometry','points']).toJS()
+    }
+})
 export class Shapes extends Component {
   constructor(props){
     super(props)
   }
+  onResetClick(evt){
+    evt.preventDefault()
+    this.props.dispatch(resetPoints())
+  }
   render(){
+    let  {p1, p2, p3} = this.props.points
     return (
       <div className='shapes-app'>
         <nav className='header-container'>
             <a className='logo' href='index.html'>Shapes</a>
-            <button className='btn waves-effect waves-white'>Reset</button>
+            <button className='btn waves-effect waves-white' onClick={this.onResetClick.bind(this)}>Reset</button>
         </nav>
         <div className='working-area'>
           <PaintWall />
+        </div>
+        <div className='info-box'>
+          <ul className='collection'>
+            <li className='collection-item'>Point 1: {coordsToString(p1)}</li>
+            <li className='collection-item'>Point 2: {coordsToString(p2)}</li>
+            <li className='collection-item'>Point 3: {coordsToString(p3)}</li>
+            <li className='collection-item'>Parallelogram Area: </li>
+            <li className='collection-item'>Circle Area: </li>
+          </ul>
         </div>
         <footer className='page-footer'>
           <div className='copyright container grey-text text-lighten-4 left'>@ 2015 Martin Jirku</div>

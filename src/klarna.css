@@ -1,3 +1,28 @@
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Thin), url("font/roboto/Roboto-Thin.woff2") format("woff2"), url("font/roboto/Roboto-Thin.woff") format("woff"), url("font/roboto/Roboto-Thin.ttf") format("truetype");
+    font-weight: 200; }
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Light), url("font/roboto/Roboto-Light.woff2") format("woff2"), url("font/roboto/Roboto-Light.woff") format("woff"), url("font/roboto/Roboto-Light.ttf") format("truetype");
+    font-weight: 300; }
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Regular), url("font/roboto/Roboto-Regular.woff2") format("woff2"), url("font/roboto/Roboto-Regular.woff") format("woff"), url("font/roboto/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400; }
+
+@font-face {
+    font-family: "Roboto";
+    src: url("font/roboto/Roboto-Medium.woff2") format("woff2"), url("font/roboto/Roboto-Medium.woff") format("woff"), url("font/roboto/Roboto-Medium.ttf") format("truetype");
+    font-weight: 500; }
+
+@font-face {
+    font-family: "Roboto";
+    src: url("font/roboto/Roboto-Bold.woff2") format("woff2"), url("font/roboto/Roboto-Bold.woff") format("woff"), url("font/roboto/Roboto-Bold.ttf") format("truetype");
+    font-weight: 700; }
+
 body, html {
     height: 100%;
 }
@@ -13,7 +38,6 @@ body, html {
     display: flex;
     flex-direction: row;
     height: 128px;
-    
     alignment-baseline: text-before-edge;
     align-items: center;
     align-content: space-around;
@@ -22,10 +46,6 @@ body, html {
 .header-container .btn {
     margin-right: 15px;
     height: 60px;
-}
-
-.working-area {
-    flex-grow: 1;
 }
 
 footer.page-footer {
@@ -59,7 +79,60 @@ a.brand-logo {
 a.logo {
     color: #fff;     
     flex-grow: 1;
-    display: inline-block;     font-size: 2.1rem;
+    display: inline-block;
+    font-size: 2.1rem;
     align-self: center;
     margin-left: 15px;
+}
+
+.info-box {
+    position: absolute;
+    bottom: 40px;
+    left: 15px;
+    width: 300px;
+    
+}
+
+.working-area {
+    display: flex;
+    flex-grow: 1;
+}
+
+.paint-wall {
+    display: flex;
+    flex-grow: 1;
+}
+
+.paint-wall svg {
+    flex-grow: 1;
+    width: 100%;
+}
+
+circle.point {
+    fill: transparent;
+    stroke: black;
+    animation: place-point 0.5s 0s 1 ease-out;
+    transform-origin: inherit;
+    transition: transform 0.5s;
+}
+
+circle.point:hover {
+    cursor: pointer;
+    stroke-width: 1.5;
+    transform: scale(1.25);
+}
+
+@keyframes place-point {
+    0% {
+        opacity: 0;
+        transform: translate(0) scale(0.1)
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(0) scale(2)
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0) scale(1)
+    }
 }

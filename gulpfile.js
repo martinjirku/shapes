@@ -7,12 +7,16 @@ var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('default', ['webpack-dev-server']);
 
+gulp.task('build', ['css', 'html', 'webpack','font']);
+
 gulp.task('build-dev', ['webpack:build-dev'], function (){
   gulp.watch(['app/**/*'], ['webpack:build-dev']);
 });
 
 gulp.task('webpack', function (callback){
-  webpack(webpackConfig, function (err, stats){
+  var config = Object.create(webpackConfig)
+  config.entry = ['./src/index']
+  webpack(config, function (err, stats){
     if(err) throw new gutil.PluginError('webpack', err)
 
     gutil.log('[webpack]', stats.toString({
@@ -28,12 +32,15 @@ gulp.task('html', function (){
 });
 
 gulp.task('css', function (){
-  return gulp.src(['./src/klarna.css', './src/normalize.css'])
+  return gulp.src(['./src/klarna.css', './node_modules/materialize-css/css/ghpages-materialize.css'])
     .pipe(gulp.dest('./build'))
 });
-
+gulp.task('font', function(){
+    return gulp.src(['./node_modules/materialize-css/font/roboto/*'])
+    .pipe(gulp.dest('./build/font/'))
+})
 gulp.task('css:dev', function (){
-  return gulp.src(['./node_modules/normalize.css/normalize.css', './node_modules/materialize-css/css/ghpages-materialize.css'])
+  return gulp.src(['./node_modules/materialize-css/css/ghpages-materialize.css'])
     .pipe(gulp.dest('./src'))
 })
 
