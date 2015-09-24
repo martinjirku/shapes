@@ -5,12 +5,16 @@ import { editPoint } from '../action-creators/geometry'
 import { getElementPosition } from '../common/geom-helpers'
 
 import { Point } from '../components/point'
+import { Parallelogram } from '../components/parallelogram'
+import { Circle } from '../components/circle'
 
 @connect(state=>{
-  const stateJS = state.toJS()
+  const stateGeom = state.get('geometry')
   return {
-    nextPointToDraw: state.get('points', stateJS.geometry.currentDrawPoint),
-    points: state.getIn(['geometry','points']),
+    nextPointToDraw: stateGeom.getIn(['points', stateGeom.get('currentDrawPoint')]),
+    points: stateGeom.get('points'),
+    parallelogram: stateGeom.get('parallelogram'),
+    circle: stateGeom.get('circle'),
   }
 })
 export class PaintWall extends Component {
@@ -32,6 +36,8 @@ export class PaintWall extends Component {
       <div className='paint-wall'>
         <Svg onClick={this.onclick.bind(this)} >
           {this.getPoints()}
+          <Parallelogram coord={this.props.parallelogram} />
+          <Circle coord={this.props.circle.get('coord').toJS()} r={this.props.circle.get('r')} />
         </Svg>
       </div>
     )
