@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Svg } from '../components/svg'
-import { editPoint } from '../action-creators/geometry'
+import { editPoint } from '../common/action-creators'
 import { getElementPosition } from '../common/geom-helpers'
-import { movePoint } from '../action-creators/geometry'
+import { movePoint } from '../common/action-creators'
 
 import { Point } from '../components/point'
 import { Parallelogram } from '../components/parallelogram'
@@ -23,7 +23,7 @@ export class PaintWall extends Component {
     super(props)
   }
 
-  onclick(evt){
+  onClick(evt){
     if(this.wasDrag){
       this.wasDrag = false
       return
@@ -69,8 +69,8 @@ export class PaintWall extends Component {
   render(){
     return (
       <div className='paint-wall' onMouseMove={this.onMouseMove.bind(this)} onMouseUp={this.onMouseUp.bind(this)}>
-        <Svg onClick={this.onclick.bind(this)}>
-          <Parallelogram coord={this.props.parallelogram.toJS()}/>
+        <Svg onClick={this.onClick.bind(this)}>
+          {this.props.parallelogram.toJS()? <Parallelogram coord={this.props.parallelogram.toJS()}/> : ''}
           <Circle className='circle' coord={this.props.circle.get('coord').toJS()} r={this.props.circle.get('r')}/>
           {this.getPoints()}
         </Svg>

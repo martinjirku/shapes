@@ -4,4 +4,4 @@ npm-debug.log
 
 build/
 src/normalize.css
-src/ghpages-materialize.css
+src/css/ghpages-materialize.css

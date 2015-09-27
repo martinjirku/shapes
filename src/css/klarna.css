@@ -3,18 +3,32 @@ body, html {
 }
 
 .shapes-app {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-align-content: space-around;
+    -ms-flex-line-pack: distribute;
     align-content: space-around;
     height: 100%;
 }
 
 .header-container {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
     height: 128px;
     alignment-baseline: text-before-edge;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-align-content: space-around;
+    -ms-flex-line-pack: distribute;
     align-content: space-around;
 }
 
@@ -24,7 +38,13 @@ body, html {
 }
 
 footer.page-footer {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+
+    -webkit-flex-grow: 0;
+
+    -ms-flex-positive: 0;
 
     flex-grow: 0;
     alignment-baseline: central;
@@ -37,12 +57,18 @@ footer.copyright {
 }
 
 .copyright {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
     align-self: center;
     margin-left: 15px;
 }
 
 .tool-bar {
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
     flex-grow: 0;
 }
 
@@ -53,24 +79,38 @@ a.brand-logo {
 
 a.logo {
     color: #fff;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
     display: inline-block;
     font-size: 2.1rem;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
     align-self: center;
     margin-left: 15px;
 }
 
 .working-area {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
 }
 
 .paint-wall {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
 }
 
 .paint-wall svg {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
     width: 100%;
 }
@@ -84,11 +124,17 @@ a.logo {
 }
 
 .info-box .collection-item {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-align-content: space-between;
+    -ms-flex-line-pack: justify;
     align-content: space-between;
 }
 
 .info-box .collection-item span:first-child {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
 }
 
@@ -97,8 +143,14 @@ a.logo {
     height: 100%;
     position: absolute;
     z-index: 20;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
     align-items: stretch;
     top: 0;
     left: 0;
@@ -117,8 +169,14 @@ a.logo {
 .modal {
     max-height: 80%;
     position: relative;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
     align-self: center;
     z-index: 15;
 }
@@ -128,6 +186,8 @@ a.logo {
 }
 
 .modal-footer {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
     flex-shrink: 0;
 }
 
@@ -145,12 +205,16 @@ svg {
 circle.point {
     fill: transparent;
     stroke: red;
+    -webkit-animation: place-point 500ms 0s 1 ease-out;
     animation: place-point 500ms 0s 1 ease-out;
+    -webkit-transform-origin: inherit;
     transform-origin: inherit;
+    transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
 }
 
 .safari circle.point {
+    -webkit-animation: none;
     animation: none;
 }
 
@@ -161,10 +225,13 @@ circle.point {
 circle.point:hover {
     cursor: pointer;
     stroke-width: 1.5;
+    -webkit-transform-origin: inherit;
     transform-origin: inherit;
+    -webkit-transform: scale(1.6);
     transform: scale(1.6);
 }
 .firefox circle.point:hover {
+    -webkit-transform: scale(1);
     transform: scale(1);
     stroke-width: 2;
 }
@@ -172,20 +239,50 @@ circle.circle {
     stroke: yellow;
 }
 
-@keyframes place-point {
+@-webkit-keyframes place-point {
     0% {
         opacity: 0;
+        -webkit-transform-origin: inherit;
         transform-origin: inherit;
+        -webkit-transform: scale(0.1);
         transform: scale(0.1)
     }
     50% {
         opacity: 0.5;
+        -webkit-transform-origin: inherit;
         transform-origin: inherit;
+        -webkit-transform: scale(2);
         transform: scale(2)
     }
     100% {
         opacity: 1;
+        -webkit-transform-origin: inherit;
         transform-origin: inherit;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@keyframes place-point {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: inherit;
+        transform-origin: inherit;
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1)
+    }
+    50% {
+        opacity: 0.5;
+        -webkit-transform-origin: inherit;
+        transform-origin: inherit;
+        -webkit-transform: scale(2);
+        transform: scale(2)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: inherit;
+        transform-origin: inherit;
+        -webkit-transform: scale(1);
         transform: scale(1)
     }
 }
