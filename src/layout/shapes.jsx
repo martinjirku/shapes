@@ -10,7 +10,8 @@ import { resetPoints } from '../action-creators/geometry'
 @connect(state=>{
     state.toJS()
     return {
-        points: state.getIn(['geometry','points']).toJS()
+        points: state.getIn(['geometry','points']).toJS(),
+        pallelogramArea: state.getIn(['geometry','parallelogram','area']),
     }
 })
 export class Shapes extends Component {
@@ -34,11 +35,10 @@ export class Shapes extends Component {
         </div>
         <div className='info-box'>
           <ul className='collection'>
-            <li className='collection-item'>Point 1: {coordsToString(p1)}</li>
-            <li className='collection-item'>Point 2: {coordsToString(p2)}</li>
-            <li className='collection-item'>Point 3: {coordsToString(p3)}</li>
-            <li className='collection-item'>Parallelogram Area: </li>
-            <li className='collection-item'>Circle Area: </li>
+            <li className='collection-item'>Point 1: <span>{coordsToString(p1)}</span></li>
+            <li className='collection-item'>Point 2: <span>{coordsToString(p2)}</span></li>
+            <li className='collection-item'>Point 3: <span>{coordsToString(p3)}</span></li>
+            <li className='collection-item'>Area: <span>{this.props.pallelogramArea}</span></li>
           </ul>
         </div>
         <footer className='page-footer'>

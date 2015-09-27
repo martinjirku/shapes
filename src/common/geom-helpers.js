@@ -1,5 +1,9 @@
 import {DEFAULT_COORD_DELIMITER} from './constants'
 
+export const getLineWidth = (a,b)=>{
+  return sqrt(pow(a[0]-b[0]) + pow(a[1]-b[1]))
+}
+
 export const getElementPosition = (coordinates = {x: 0, y: 0} , element = {})=>{
     return {
         y: coordinates.y - element.offsetTop,
@@ -13,16 +17,6 @@ export const coordsToString = (coords, delimiter = DEFAULT_COORD_DELIMITER)=>{
 }
 
 export const getParallelogramCoord = (p1, p2, p3)=>{
-    //p1p2→=p3p4→
-    //(p2.X - p1.x,p2.y-p1.y ) = (X - p3.x, Y - p3.Y)
-    //      |
-    //      V
-    //X = p2.x - p1.x + p3.x
-    //Y = p2.y - p1.y + p3.y
-    //      |
-    //      V
-    //X = p1.x - p2.x + p3.x
-    //Y = p1.y - p2.y + p3.y
     if(!p1 || !p2 || !p3) return
 
     const x = p1.x - p2.x + p3.x
@@ -33,6 +27,31 @@ export const getParallelogramCoord = (p1, p2, p3)=>{
         [p3.x, p3.y],
         [x, y]
     ]
+}
+
+export const getParallelogramCentroid = (parallelogramCoord)=>{
+  return [
+    parallelogramCoord.reduce((sum,coord)=>sum+coord[0],0) / 4, //X
+    parallelogramCoord.reduce((sum,coord)=>sum+coord[1],0) / 4  //Y
+  ]
+}
+
+//The idea of algorithm for getting the area is taken from http://alienryderflex.com/polygon_area/
+export const getPolygonArea = (polygonCoord)=>{
+  if(polygonCoord.length < 3) return 0
+  let area = 0
+  for (let i = 0; i < polygonCoord.length; i++){
+    const [x1,y1] = polygonCoord[i]
+    const [x2,y2] = polygonCoord[i+1] || polygonCoord[0]
+    area += x1*y2 - y1*x2
+  }
+  return Math.abs(area) / 2
+}
+
+export const getParallelogramArea = parallelogramCoord=>getPolygonArea(parallelogramCoord)
+
+export const getCircleRadius = circleArea=>{
+  return Math.sqrt(circleArea / Math.PI)
 }
 
 export const getPathFromCoord = (pathCoord)=>{

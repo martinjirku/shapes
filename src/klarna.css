@@ -25,7 +25,7 @@ body, html {
 
 footer.page-footer {
     display: flex;
-    
+
     flex-grow: 0;
     alignment-baseline: central;
     margin: 0px;
@@ -52,20 +52,12 @@ a.brand-logo {
 }
 
 a.logo {
-    color: #fff;     
+    color: #fff;
     flex-grow: 1;
     display: inline-block;
     font-size: 2.1rem;
     align-self: center;
     margin-left: 15px;
-}
-
-.info-box {
-    position: absolute;
-    bottom: 40px;
-    left: 15px;
-    width: 300px;
-    
 }
 
 .working-area {
@@ -83,18 +75,40 @@ a.logo {
     width: 100%;
 }
 
+.info-box {
+    position: absolute;
+    bottom: 40px;
+    left: 15px;
+    width: 200px;
+
+}
+
+.info-box .collection-item {
+    display: flex;
+    align-content: space-between;
+}
+
+.info-box .collection-item span:first-child {
+    flex-grow: 1;
+}
+
 circle.point {
     fill: transparent;
-    stroke: black;
+    stroke: red;
     animation: place-point 0.5s 0s 1 ease-out;
     transform-origin: inherit;
-    transition: transform 0.5s;
+    transition: transform 0.3s;
 }
 
 circle.point:hover {
     cursor: pointer;
     stroke-width: 1.5;
-    transform: scale(1.25);
+    transform: scale(1.6);
+}
+
+
+circle.circle {
+    stroke: yellow
 }
 
 @keyframes place-point {

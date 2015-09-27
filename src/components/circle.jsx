@@ -16,7 +16,7 @@ export class Circle extends Component {
   }
   render(){
     return (
-      <circle cx={this.state.cx } cy={this.state.cy} r={this.state.r} fill='transparent' stroke='blue'/>
+      <circle cx={this.state.cx } cy={this.state.cy} r={this.state.r} fill='transparent' stroke='yellow'/>
     )
   }
 }
